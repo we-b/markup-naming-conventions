@@ -1,10 +1,9 @@
-# markup-naming-conventions
-
 # we-b CSS Naming conventions
 we-bでHTML/CSSをマークアップするときの命名規則です。
 
 # ベースはBEM記法を使います。
 Block、Element、Modifierの頭文字を取ったものであり、要素を3つのどれかに当てはめて命名していく方法。
+
 - Block → ルートとなる Block 要素
 - Element → Block に属する子要素
 - Modifier → Block, Element に修飾を追加した要素
@@ -13,16 +12,16 @@ Block、Element、Modifierの頭文字を取ったものであり、要素を3�
 
 ## 命名規則
 
-`
+```
 block
 block_element
 block_element-modifier
 block-modifier
 block-modifier_element
-`
+```
 
 ### HTML
-`
+``` html
 <div class=“block”>
 	<div class=“block_element”></div>
 	<div class=“block_element-modifier”></div>
@@ -30,10 +29,11 @@ block-modifier_element
 <div class=“block-modifier”>
 	<div class=“block-modifier_element”></div>
 </div>
-`
+```
 
 ### SCSS
-`
+
+``` css
 $techcamp-color: #dc5041;
 $techcamp-color-green: #43ac6a;
 
@@ -58,7 +58,7 @@ $techcamp-color-green: #43ac6a;
 .block-modifier_element {
 	@extend .block_element-modifier;
 }
-`
+```
 
 # we-b では Bootstrap を使います。
 [Bootstrap · The world's most popular mobile-first and responsive front-end framework.](http://getbootstrap.com/)
@@ -70,8 +70,10 @@ $techcamp-color-green: #43ac6a;
 # その他のCSSの書き方
 ## セレクタの後には、改行を入れましょう
 改行があると無いとで見やすがダンチです。
+
 - Example
-`
+
+``` css
 .example {
 	color: #000;
 
@@ -83,11 +85,12 @@ $techcamp-color-green: #43ac6a;
 .example-body {
 	background-color: #eee;
 }
-`
+```
 
 ## 変数を使いましょう
 SCSS では、変数が使えるので色やフォントなど固定できるものは使いましょう。
-`
+
+``` css
 $baseColor: #dc5041; //tech-camp red color #dc5041
 $fz-regular: 14px; // font-size: 14px;
 
@@ -96,22 +99,24 @@ h1 {
   font-size: $dz-regular;
   color: #fff;
 }
-`
+```
 
 ## 色を薄く・濃くする場合は色は新しく作らない
 SCSS では、色を薄く・濃くすることができます。新たに１６進数を指定するのではなく、こちらで色を変更しましょう。
-`
+
+``` css
 h1 {
 	background-color: lighten($baseColor, 10%); // #dc5041 を　10％　薄くする
 	color: darken(#fff, 20%); // #fff を 20% 濃くする
 	
 }
-`
+```
 
 ##  上書きは極力避ける
 CSS で上書きを繰り返すと、予期せぬところでCSS が適用できない場面が出てきます。
 上書きをせずに、Modifier を作り、スタイルを変えていきましょう。
-`
+
+``` css
 // ダメな例
 
 .btn {
@@ -143,7 +148,6 @@ CSS で上書きを繰り返すと、予期せぬところでCSS が適用でき
 	@extend .btn-primary;
 	@extend .btn-large;
 }
-
- `
+```
  
 
